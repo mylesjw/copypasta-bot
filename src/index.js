@@ -14,7 +14,10 @@ client.on('message', ({ content, channel, author }) => {
 
   let output = handleInput(input[0]);
 
-  if (input[1] && parseInt(input[1], 10)) output = output.repeat(input[1]);
+  let repeats = parseInt(input[1], 10);
+  repeats = repeats > 10 ? 10 : repeats;
+
+  if (repeats) output = output.repeat(repeats);
 
   channel.send(output);
 });
